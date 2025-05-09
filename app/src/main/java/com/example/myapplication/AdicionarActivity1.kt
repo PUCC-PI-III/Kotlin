@@ -45,12 +45,11 @@ class AdicionarActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.criar_risco)
-
         clickedImage = findViewById(R.id.imagemRiscoView)
         tituloInput = findViewById(R.id.tituloInput)
         obsInput = findViewById(R.id.descricaoInput)
         adicionarBtn = findViewById(R.id.AdicionarBtn)
-
+        
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
         solicitarPermissaoLocalizacao()
 
@@ -86,6 +85,7 @@ class AdicionarActivity : AppCompatActivity() {
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (requestCode == LOCATION_REQUEST_CODE && grantResults.isNotEmpty() &&
             grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             obterLocalizacao()
@@ -122,7 +122,7 @@ class AdicionarActivity : AppCompatActivity() {
             .build()
 
         val request = Request.Builder()
-            .url("http://10.0.2.2:3000/riscos")
+            .url("http://192.168.0.10:8080/riscos")
             .post(requestBody)
             .build()
 

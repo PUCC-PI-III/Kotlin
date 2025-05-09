@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun loginUser(email: String, senha: String) {
-        val url = "http://10.0.2.2:3000/users"
+        val url = "http://192.168.0.10:8080/users"
 
         val request = Request.Builder()
             .url(url)
